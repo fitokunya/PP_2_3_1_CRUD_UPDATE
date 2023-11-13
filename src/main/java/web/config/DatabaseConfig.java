@@ -20,7 +20,7 @@ import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:db.properties")
-@EnableTransactionManagement
+@EnableTransactionManagement(proxyTargetClass = true)
 @ComponentScan("web")
 public class DatabaseConfig {
     private final Environment env;

@@ -6,6 +6,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -16,15 +20,22 @@ public class User {
     private long id;
 
     @Column(name = "name")
+    @NotEmpty(message = "Please write your name")
+    @Size(min = 3, max = 24, message = "Please write the name in size from 3 to 24 characters")
     private String name;
 
     @Column(name = "lastname")
+    @NotEmpty(message = "Please write your last name")
+    @Size(min = 3, max = 24, message = "Please write the last name in size from 3 to 24 characters")
     private String lastname;
 
     @Column(name = "age")
+    @Min(value = 7, message = "Please specify the age of at least 7 years")
     private int age;
 
     @Column(name = "email")
+    @NotEmpty(message = "Please write your EMail")
+    @Email(message = "Please write EMail with format ***@***.**")
     private String email;
 
     public User() {
